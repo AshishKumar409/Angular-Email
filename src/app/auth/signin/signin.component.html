@@ -1,0 +1,37 @@
+<h3>Sign In</h3>
+
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="authForm">
+  <app-input inputType="text" label="Username" [control]="authForm.get('username')"></app-input>
+
+  <div *ngIf="authForm.errors && authForm.errors['noUser']"  class="ui pointing basic red label">
+    <p *ngIf="authForm.errors['noUser']">
+      Cannot Find The User!
+    </p>
+    <p *ngIf="authForm.errors['emptyUser']">
+      Enter Username!
+    </p>
+  </div>
+  <div *ngIf=" authForm.errors && authForm.errors['emptyUser']" class="ui pointing basic red label">
+    <p >
+      Enter Username!
+    </p>
+  </div>
+
+
+
+  <app-input inputType="password" label="Password" [control]="authForm.get('password')"></app-input>
+
+  <div *ngIf="authForm.errors" class="ui pointing basic red label">
+    <p *ngIf="authForm.errors['noPassword']">
+      Wrong Password!
+    </p>
+    <p *ngIf="authForm.errors['emptyPassword']">
+      Enter Password!
+    </p>
+  </div>
+
+  <div>
+    <button class="ui submit button primary" type="submit">Submit</button>
+  </div>
+
+</form>

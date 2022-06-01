@@ -1,0 +1,38 @@
+<h1>Create Your Account</h1>
+<form (ngSubmit)="onSubmit()" class="ui form" [formGroup]="emailForm">
+
+
+
+
+  <app-input inputType="text" label="Username" [control]="emailForm.get('username')"></app-input>
+ 
+
+
+
+
+  <app-input label="Password" inputType="password" [control]="emailForm.get('password')"></app-input>
+
+
+
+
+
+  <app-input inputType="password" label="Confirm Password" [control]="emailForm.get('passwordConfirmation')">
+  </app-input>
+
+
+  <div *ngIf="emailForm.get('password')?.touched && emailForm.get('passwordConfirmation')?.touched && emailForm.errors" class="ui pointing basic red label">
+
+  <p *ngIf="emailForm.errors['passwordDontMatch']">
+    Passwords Don't Match
+  </p>
+  <p *ngIf="emailForm.errors['noConnection']">
+    There's something wrong with the internet connection
+  </p>
+
+  </div>
+  
+  <div>
+  <button class="ui submit button primary" type="submit">Submit</button>
+  </div>
+  <!-- {{emailForm.errors | json}} -->
+</form>
